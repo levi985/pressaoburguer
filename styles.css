@@ -1,61 +1,38 @@
-/* Pressão Burguer - Identidade Visual Moderna e Responsiva */
-
-/* ========================================
-   VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
-   ======================================== */
 :root {
-    /* Paleta Principal */
-    --primary-red: #E53E3E;           /* Vermelho vibrante */
-    --primary-red-dark: #C53030;      /* Vermelho escuro */
-    --primary-red-light: #FC8181;     /* Vermelho claro */
-    --accent-orange: #FF6B35;         /* Laranja de destaque */
-    --accent-yellow: #FFD23F;         /* Amarelo dourado */
-    
-    /* Neutros */
-    --background-light: #FAFAFA;      /* Off-white moderno */
-    --background-white: #FFFFFF;      /* Branco puro */
-    --text-dark: #2D3748;             /* Cinza escuro */
-    --text-medium: #4A5568;           /* Cinza médio */
-    --text-light: #718096;            /* Cinza claro */
-    --border-light: #E2E8F0;          /* Borda clara */
-    --border-medium: #CBD5E0;         /* Borda média */
-    
-    /* Header e Navegação */
-    --header-dark: #1A202C;           /* Preto moderno */
+    --primary-red: #E53E3E;
+    --primary-red-dark: #C53030;
+    --primary-red-light: #FC8181;
+    --accent-orange: #FF6B35;
+    --accent-yellow: #FFD23F;
+    --background-light: #FAFAFA;
+    --background-white: #FFFFFF;
+    --text-dark: #2D3748;
+    --text-medium: #4A5568;
+    --text-light: #718096;
+    --border-light: #E2E8F0;
+    --border-medium: #CBD5E0;
+    --header-dark: #1A202C;
     --header-gradient: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
-    
-    /* Status Colors */
-    --status-pending: #E53E3E;        /* Vermelho para pendente */
-    --status-preparing: #FF6B35;      /* Laranja para em preparo */
-    --status-completed: #38A169;      /* Verde para concluído */
-    --status-cancelled: #718096;      /* Cinza para cancelado */
-    
-    /* Sombras */
+    --status-pending: #E53E3E;
+    --status-preparing: #FF6B35;
+    --status-completed: #38A169;
+    --status-cancelled: #718096;
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
     --shadow-red: 0 4px 14px rgba(229, 62, 62, 0.3);
-    
-    /* Bordas */
     --radius-sm: 0.375rem;
     --radius-md: 0.5rem;
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
-    
-    /* Transições */
     --transition-fast: 0.15s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
-    
-    /* Tipografia */
     --font-primary: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-display: 'Poppins', 'Inter', sans-serif;
 }
 
-/* ========================================
-   RESET E CONFIGURAÇÕES BASE
-   ======================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -76,9 +53,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* ========================================
-   TIPOGRAFIA MODERNA
-   ======================================== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 700;
@@ -98,9 +72,6 @@ p {
     margin-bottom: 1rem;
 }
 
-/* ========================================
-   HEADER MODERNO COM GRADIENTE
-   ======================================== */
 .header {
     background: var(--header-gradient);
     color: var(--background-white);
@@ -166,9 +137,6 @@ p {
     left: 100%;
 }
 
-/* ========================================
-   BOTÕES MODERNOS E INTERATIVOS
-   ======================================== */
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
     color: var(--background-white);
@@ -216,9 +184,6 @@ p {
     transform: translateY(-1px);
 }
 
-/* ========================================
-   CARDS ELEGANTES COM EFEITOS
-   ======================================== */
 .card {
     background: var(--background-white);
     padding: 2.5rem;
@@ -254,9 +219,6 @@ p {
     font-weight: 700;
 }
 
-/* ========================================
-   FORMULÁRIOS MODERNOS
-   ======================================== */
 .form-group {
     margin-bottom: 1.5rem;
     position: relative;
@@ -294,7 +256,6 @@ p {
     font-style: italic;
 }
 
-/* Select estilizado */
 .form-control[type="select"] {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
     background-position: right 0.75rem center;
@@ -303,9 +264,6 @@ p {
     padding-right: 2.5rem;
 }
 
-/* ========================================
-   BADGES E STATUS MODERNOS
-   ======================================== */
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -356,9 +314,6 @@ p {
     color: var(--background-white);
 }
 
-/* ========================================
-   TABELA MODERNA E RESPONSIVA
-   ======================================== */
 .pedido-table {
     width: 100%;
     border-collapse: collapse;
@@ -399,9 +354,6 @@ p {
     border-bottom: none;
 }
 
-/* ========================================
-   CARDS MOBILE ELEGANTES
-   ======================================== */
 .pedido-card-mobile {
     display: block;
 }
@@ -441,9 +393,6 @@ p {
     font-weight: 600;
 }
 
-/* ========================================
-   FOOTER MODERNO
-   ======================================== */
 footer {
     background: linear-gradient(135deg, var(--header-dark), #2D3748);
     color: var(--background-white);
@@ -470,9 +419,6 @@ footer p {
     opacity: 0.9;
 }
 
-/* ========================================
-   ANIMAÇÕES E MICRO-INTERAÇÕES
-   ======================================== */
 .fade-in {
     animation: fadeInUp 0.6s ease-out;
 }
@@ -523,9 +469,6 @@ footer p {
     }
 }
 
-/* ========================================
-   UTILITÁRIOS E HELPER CLASSES
-   ======================================== */
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
@@ -556,9 +499,6 @@ footer p {
 .justify-content-center { justify-content: center; }
 .align-items-center { align-items: center; }
 
-/* ========================================
-   RESPONSIVIDADE AVANÇADA
-   ======================================== */
 @media (max-width: 767px) {
     .header {
         flex-direction: column;
@@ -653,9 +593,6 @@ footer p {
     }
 }
 
-/* ========================================
-   ACESSIBILIDADE AVANÇADA
-   ======================================== */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -668,7 +605,6 @@ footer p {
     border: 0;
 }
 
-/* Foco visível para navegação por teclado */
 a:focus,
 button:focus,
 input:focus,
@@ -679,7 +615,6 @@ textarea:focus {
     border-radius: var(--radius-sm);
 }
 
-/* Estados de loading */
 .loading {
     opacity: 0.6;
     pointer-events: none;
@@ -705,9 +640,6 @@ textarea:focus {
     100% { transform: rotate(360deg); }
 }
 
-/* ========================================
-   MELHORIAS VISUAIS ESPECIAIS
-   ======================================== */
 .shadow-sm { box-shadow: var(--shadow-sm); }
 .shadow { box-shadow: var(--shadow-md); }
 .shadow-lg { box-shadow: var(--shadow-lg); }
@@ -718,7 +650,6 @@ textarea:focus {
 .rounded-lg { border-radius: var(--radius-lg); }
 .rounded-xl { border-radius: var(--radius-xl); }
 
-/* Gradientes de fundo */
 .bg-gradient-primary {
     background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
 }
@@ -727,7 +658,6 @@ textarea:focus {
     background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
 }
 
-/* Efeitos de hover */
 .hover-lift:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
@@ -737,7 +667,6 @@ textarea:focus {
     transform: scale(1.02);
 }
 
-/* Texto com gradiente */
 .text-gradient {
     background: linear-gradient(135deg, var(--primary-red), var(--accent-orange));
     -webkit-background-clip: text;
