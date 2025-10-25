@@ -257,3 +257,4 @@ O protótipo **Pressão Burguer** agora possui:
 *Desenvolvido com HTML/CSS/JS puro, sem dependências externas*
 
 **Versão 2.0** - Design Moderno e Profissional ✨# pressaoburguer
+# press-oburguer
