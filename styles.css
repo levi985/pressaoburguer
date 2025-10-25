@@ -1,0 +1,746 @@
+/* Pressão Burguer - Identidade Visual Moderna e Responsiva */
+
+/* ========================================
+   VARIÁVEIS E CONFIGURAÇÕES GLOBAIS
+   ======================================== */
+:root {
+    /* Paleta Principal */
+    --primary-red: #E53E3E;           /* Vermelho vibrante */
+    --primary-red-dark: #C53030;      /* Vermelho escuro */
+    --primary-red-light: #FC8181;     /* Vermelho claro */
+    --accent-orange: #FF6B35;         /* Laranja de destaque */
+    --accent-yellow: #FFD23F;         /* Amarelo dourado */
+    
+    /* Neutros */
+    --background-light: #FAFAFA;      /* Off-white moderno */
+    --background-white: #FFFFFF;      /* Branco puro */
+    --text-dark: #2D3748;             /* Cinza escuro */
+    --text-medium: #4A5568;           /* Cinza médio */
+    --text-light: #718096;            /* Cinza claro */
+    --border-light: #E2E8F0;          /* Borda clara */
+    --border-medium: #CBD5E0;         /* Borda média */
+    
+    /* Header e Navegação */
+    --header-dark: #1A202C;           /* Preto moderno */
+    --header-gradient: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+    
+    /* Status Colors */
+    --status-pending: #E53E3E;        /* Vermelho para pendente */
+    --status-preparing: #FF6B35;      /* Laranja para em preparo */
+    --status-completed: #38A169;      /* Verde para concluído */
+    --status-cancelled: #718096;      /* Cinza para cancelado */
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    --shadow-red: 0 4px 14px rgba(229, 62, 62, 0.3);
+    
+    /* Bordas */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    
+    /* Transições */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Tipografia */
+    --font-primary: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Poppins', 'Inter', sans-serif;
+}
+
+/* ========================================
+   RESET E CONFIGURAÇÕES BASE
+   ======================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   TIPOGRAFIA MODERNA
+   ======================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-dark);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.125rem; }
+
+p {
+    color: var(--text-medium);
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   HEADER MODERNO COM GRADIENTE
+   ======================================== */
+.header {
+    background: var(--header-gradient);
+    color: var(--background-white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(10px);
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6B35, #E53E3E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.header a {
+    color: var(--background-white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.header a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-normal);
+}
+
+.header a:hover {
+    color: var(--accent-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header a:hover::before {
+    left: 100%;
+}
+
+/* ========================================
+   BOTÕES MODERNOS E INTERATIVOS
+   ======================================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+    color: var(--background-white);
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-red);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left var(--transition-normal);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(229, 62, 62, 0.4);
+    background: linear-gradient(135deg, var(--primary-red-dark), #B91C1C);
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   CARDS ELEGANTES COM EFEITOS
+   ======================================== */
+.card {
+    background: var(--background-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-red), var(--accent-orange), var(--accent-yellow));
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-red-light);
+}
+
+.card h5 {
+    color: var(--text-dark);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* ========================================
+   FORMULÁRIOS MODERNOS
+   ======================================== */
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: all var(--transition-normal);
+    background: var(--background-white);
+    color: var(--text-dark);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* Select estilizado */
+.form-control[type="select"] {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+
+/* ========================================
+   BADGES E STATUS MODERNOS
+   ======================================== */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: var(--radius-lg);
+    background: var(--status-pending);
+    color: var(--background-white);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.status-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left var(--transition-normal);
+}
+
+.status-badge:hover::before {
+    left: 100%;
+}
+
+.status-badge.warning {
+    background: linear-gradient(135deg, var(--status-preparing), #FF8C42);
+    color: var(--background-white);
+}
+
+.status-badge.success {
+    background: linear-gradient(135deg, var(--status-completed), #48BB78);
+    color: var(--background-white);
+}
+
+.status-badge.cancelled {
+    background: var(--status-cancelled);
+    color: var(--background-white);
+}
+
+/* ========================================
+   TABELA MODERNA E RESPONSIVA
+   ======================================== */
+.pedido-table {
+    width: 100%;
+    border-collapse: collapse;
+    display: none;
+    background: var(--background-white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-top: 2rem;
+}
+
+.pedido-table th,
+.pedido-table td {
+    padding: 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.pedido-table th {
+    background: linear-gradient(135deg, var(--header-dark), #2D3748);
+    color: var(--background-white);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pedido-table tbody tr {
+    transition: all var(--transition-fast);
+}
+
+.pedido-table tbody tr:hover {
+    background: linear-gradient(135deg, #F7FAFC, #EDF2F7);
+    transform: scale(1.01);
+}
+
+.pedido-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================
+   CARDS MOBILE ELEGANTES
+   ======================================== */
+.pedido-card-mobile {
+    display: block;
+}
+
+.pedido-card-mobile .card {
+    border-left: 5px solid var(--primary-red);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.pedido-card-mobile .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(229, 62, 62, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+}
+
+.pedido-card-mobile .card h5 {
+    color: var(--primary-red);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.pedido-card-mobile .card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.pedido-card-mobile .card strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ========================================
+   FOOTER MODERNO
+   ======================================== */
+footer {
+    background: linear-gradient(135deg, var(--header-dark), #2D3748);
+    color: var(--background-white);
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-red), var(--accent-orange), var(--accent-yellow));
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ========================================
+   ANIMAÇÕES E MICRO-INTERAÇÕES
+   ======================================== */
+.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.bounce-in {
+    animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========================================
+   UTILITÁRIOS E HELPER CLASSES
+   ======================================== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
+
+.d-flex { display: flex; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-center { justify-content: center; }
+.align-items-center { align-items: center; }
+
+/* ========================================
+   RESPONSIVIDADE AVANÇADA
+   ======================================== */
+@media (max-width: 767px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .header a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .btn-primary {
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    
+    .pedido-table {
+        display: none !important;
+    }
+    
+    .pedido-card-mobile {
+        display: block !important;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+    
+    .header {
+        padding: 1rem 2rem;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .pedido-table {
+        display: table;
+    }
+    
+    .pedido-card-mobile {
+        display: none;
+    }
+    
+    .login-container,
+    .formulario-container {
+        max-width: 500px;
+        margin: 2rem auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .card {
+        padding: 3rem;
+    }
+    
+    .pedido-table th,
+    .pedido-table td {
+        padding: 1.5rem;
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE AVANÇADA
+   ======================================== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Foco visível para navegação por teclado */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--accent-yellow);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* Estados de loading */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--border-light);
+    border-top: 2px solid var(--primary-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================
+   MELHORIAS VISUAIS ESPECIAIS
+   ======================================== */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-xl { border-radius: var(--radius-xl); }
+
+/* Gradientes de fundo */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+}
+
+.bg-gradient-accent {
+    background: linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+}
+
+/* Efeitos de hover */
+.hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+/* Texto com gradiente */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-red), var(--accent-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressão Burguer - Pedidos Pendentes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>🍔 PRESSÃO BURGUER</h1>
+        <nav aria-label="Navegação Principal">
+            <a href="home.html">🏠 Home</a>
+            <a href="formulario_pedido.html">➕ Fazer Pedido</a>
+            <a href="login.html">🔐 Login</a>
+            <a href="cadastro.html">👤 Cadastro</a>
+        </nav>
+    </header>
+
+    <main id="main-content" style="padding: 2rem;">
+        <div class="container">
+            <!-- Cabeçalho com estatísticas -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2 class="text-gradient mb-2">Pedidos Pendentes (FIFO)</h2>
+                    <p style="color: var(--text-medium); font-size: 1.1rem;">Sistema de fila por ordem de chegada</p>
+                </div>
+                <a href="formulario_pedido.html" class="btn-primary bounce-in">
+                    ➕ Novo Pedido
+                </a>
+            </div>
+
+            <!-- Estatísticas rápidas -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+                <div class="card text-center hover-lift" style="padding: 1.5rem;">
+                    <div style="font-size: 2.5rem; color: var(--status-pending); margin-bottom: 0.5rem;">🍔</div>
+                    <h3 style="color: var(--status-pending); margin-bottom: 0.5rem;">5</h3>
+                    <p style="color: var(--text-medium); margin: 0; font-weight: 600;">Pendentes</p>
+                </div>
+                <div class="card text-center hover-lift" style="padding: 1.5rem;">
+                    <div style="font-size: 2.5rem; color: var(--status-preparing); margin-bottom: 0.5rem;">👨‍🍳</div>
+                    <h3 style="color: var(--status-preparing); margin-bottom: 0.5rem;">2</h3>
+                    <p style="color: var(--text-medium); margin: 0; font-weight: 600;">Em Preparo</p>
+                </div>
+                <div class="card text-center hover-lift" style="padding: 1.5rem;">
+                    <div style="font-size: 2.5rem; color: var(--status-completed); margin-bottom: 0.5rem;">✅</div>
+                    <h3 style="color: var(--status-completed); margin-bottom: 0.5rem;">12</h3>
+                    <p style="color: var(--text-medium); margin: 0; font-weight: 600;">Concluídos</p>
+                </div>
+                <div class="card text-center hover-lift" style="padding: 1.5rem;">
+                    <div style="font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 0.5rem;">📊</div>
+                    <h3 style="color: var(--accent-orange); margin-bottom: 0.5rem;">19</h3>
+                    <p style="color: var(--text-medium); margin: 0; font-weight: 600;">Total Hoje</p>
+                </div>
+            </div>
+
+            <!-- Layout Mobile: Cards -->
+            <div class="pedido-card-mobile">
+                <div class="card fade-in hover-lift">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h5>#1234</h5>
+                        <span class="status-badge pulse">PENDENTE</span>
+                    </div>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">🍔</span>
+                            <div>
+                                <strong>X-Salada</strong>
+                                <p style="margin: 0; color: var(--text-medium); font-size: 0.9rem;">Sem cebola</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">👤</span>
+                            <span><strong>João Silva</strong></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">⏰</span>
+                            <span style="color: var(--text-medium);">10:30h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in hover-lift">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h5>#1235</h5>
+                        <span class="status-badge pulse">PENDENTE</span>
+                    </div>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">🥓</span>
+                            <div>
+                                <strong>X-Bacon</strong>
+                                <p style="margin: 0; color: var(--text-medium); font-size: 0.9rem;">Bem passado</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">👤</span>
+                            <span><strong>Maria Santos</strong></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">⏰</span>
+                            <span style="color: var(--text-medium);">10:35h</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card fade-in hover-lift">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h5>#1236</h5>
+                        <span class="status-badge warning">EM PREPARO</span>
+                    </div>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">🍔</span>
+                            <div>
+                                <strong>X-Tudo</strong>
+                                <p style="margin: 0; color: var(--text-medium); font-size: 0.9rem;">-</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">👤</span>
+                            <span><strong>Pedro Costa</strong></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">⏰</span>
+                            <span style="color: var(--text-medium);">10:40h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in hover-lift">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h5>#1237</h5>
+                        <span class="status-badge success">CONCLUÍDO</span>
+                    </div>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">🍗</span>
+                            <div>
+                                <strong>X-Frango</strong>
+                                <p style="margin: 0; color: var(--text-medium); font-size: 0.9rem;">Sem tomate</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">👤</span>
+                            <span><strong>Ana Oliveira</strong></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">⏰</span>
+                            <span style="color: var(--text-medium);">10:45h</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card fade-in hover-lift">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h5>#1238</h5>
+                        <span class="status-badge pulse">PENDENTE</span>
+                    </div>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">🥩</span>
+                            <div>
+                                <strong>X-Picanha</strong>
+                                <p style="margin: 0; color: var(--text-medium); font-size: 0.9rem;">Mal passado</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">👤</span>
+                            <span><strong>Carlos Lima</strong></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="font-size: 1.2rem;">⏰</span>
+                            <span style="color: var(--text-medium);">10:50h</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Layout Desktop: Tabela -->
+            <table class="pedido-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuário</th>
+                        <th>Item</th>
+                        <th>Observação</th>
+                        <th>Hora</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>#1234</strong></td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>👤</span>
+                                <span>João Silva</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>🍔</span>
+                                <span>X-Salada</span>
+                            </div>
+                        </td>
+                        <td>Sem cebola</td>
+                        <td>10:30h</td>
+                        <td><span class="status-badge pulse">PENDENTE</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#1235</strong></td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>👤</span>
+                                <span>Maria Santos</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>🥓</span>
+                                <span>X-Bacon</span>
+                            </div>
+                        </td>
+                        <td>Bem passado</td>
+                        <td>10:35h</td>
+                        <td><span class="status-badge pulse">PENDENTE</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#1236</strong></td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>👤</span>
+                                <span>Pedro Costa</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>🍔</span>
+                                <span>X-Tudo</span>
+                            </div>
+                        </td>
+                        <td>-</td>
+                        <td>10:40h</td>
+                        <td><span class="status-badge warning">EM PREPARO</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#1237</strong></td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>👤</span>
+                                <span>Ana Oliveira</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>🍗</span>
+                                <span>X-Frango</span>
+                            </div>
+                        </td>
+                        <td>Sem tomate</td>
+                        <td>10:45h</td>
+                        <td><span class="status-badge success">CONCLUÍDO</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>#1238</strong></td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>👤</span>
+                                <span>Carlos Lima</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <span>🥩</span>
+                                <span>X-Picanha</span>
+                            </div>
+                        </td>
+                        <td>Mal passado</td>
+                        <td>10:50h</td>
+                        <td><span class="status-badge pulse">PENDENTE</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pressão Burguer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Adicionar animações de entrada escalonadas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.fade-in');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

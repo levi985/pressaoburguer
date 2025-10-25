@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressão Burguer - Novo Pedido</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>🍔 PRESSÃO BURGUER</h1>
+        <nav aria-label="Navegação Principal">
+            <a href="home.html">🏠 Home</a>
+            <a href="formulario_pedido.html">➕ Fazer Pedido</a>
+            <a href="login.html">🔐 Login</a>
+            <a href="cadastro.html">👤 Cadastro</a>
+        </nav>
+    </header>
+
+    <main id="main-content" style="padding: 2rem;">
+        <div class="formulario-container">
+            <div class="text-center mb-5">
+                <h2 class="text-gradient mb-3">Fazer Novo Pedido</h2>
+                <p style="color: var(--text-medium); font-size: 1.1rem;">Escolha seu lanche e personalize como desejar</p>
+            </div>
+            
+            <div class="card fade-in">
+                <form action="/pedidos/criar" method="POST" id="pedidoForm">
+                    <div class="form-group">
+                        <label for="id_cardapio">🍔 Selecione o Item do Cardápio</label>
+                        <select id="id_cardapio" 
+                                name="cardapio" 
+                                class="form-control" 
+                                required
+                                aria-describedby="cardapio-help">
+                            <option value="" selected disabled>-- Escolha um item --</option>
+                            <option value="x-salada" data-price="15.90">🍔 X-Salada - R$ 15,90</option>
+                            <option value="x-bacon" data-price="18.90">🥓 X-Bacon - R$ 18,90</option>
+                            <option value="x-tudo" data-price="22.90">🍔 X-Tudo - R$ 22,90</option>
+                            <option value="x-egg" data-price="16.90">🍳 X-Egg - R$ 16,90</option>
+                            <option value="x-calabresa" data-price="17.90">🌭 X-Calabresa - R$ 17,90</option>
+                            <option value="x-frango" data-price="19.90">🍗 X-Frango - R$ 19,90</option>
+                            <option value="x-vegetariano" data-price="14.90">🥬 X-Vegetariano - R$ 14,90</option>
+                            <option value="x-picanha" data-price="24.90">🥩 X-Picanha - R$ 24,90</option>
+                        </select>
+                        <small id="cardapio-help" class="sr-only">Selecione o item que deseja pedir do nosso cardápio</small>
+                    </div>
+                    
+                    <!-- Exibição do preço selecionado -->
+                    <div id="price-display" style="display: none; margin-bottom: 1.5rem;">
+                        <div class="card" style="background: linear-gradient(135deg, #E6FFFA, #B2F5EA); border: 2px solid #38B2AC; padding: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <span style="font-size: 1.5rem;">💰</span>
+                                <div>
+                                    <strong style="color: var(--text-dark);">Preço Selecionado:</strong>
+                                    <span id="selected-price" style="color: var(--primary-red); font-weight: 700; font-size: 1.2rem; margin-left: 0.5rem;">R$ 0,00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_quantidade">🔢 Quantidade</label>
+                        <select id="id_quantidade" 
+                                name="quantidade" 
+                                class="form-control"
+                                aria-describedby="quantidade-help">
+                            <option value="1" selected>1 unidade</option>
+                            <option value="2">2 unidades</option>
+                            <option value="3">3 unidades</option>
+                            <option value="4">4 unidades</option>
+                            <option value="5">5 unidades</option>
+                        </select>
+                        <small id="quantidade-help" class="sr-only">Selecione a quantidade desejada</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_observacao">📝 Observações (máx. 100 caracteres)</label>
+                        <textarea id="id_observacao" 
+                                  name="observacao"
+                                  class="form-control" 
+                                  rows="3" 
+                                  maxlength="100" 
+                                  placeholder="Ex: Sem cebola, com maionese extra, bem passado..."
+                                  aria-describedby="observacao-help"></textarea>
+                        <small id="observacao-help" class="sr-only">Adicione observações especiais para seu pedido (opcional)</small>
+                        <div class="text-right mt-1">
+                            <small id="char-count" style="color: var(--text-light); font-weight: 500;">0/100 caracteres</small>
+                        </div>
+                    </div>
+
+                    <!-- Resumo do pedido -->
+                    <div id="order-summary" style="display: none; margin-bottom: 2rem;">
+                        <div class="card" style="background: linear-gradient(135deg, #F7FAFC, #EDF2F7); border: 2px solid var(--primary-red-light);">
+                            <h4 style="color: var(--text-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                📋 Resumo do Pedido
+                            </h4>
+                            <div style="display: grid; gap: 0.75rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span><strong>Item:</strong></span>
+                                    <span id="summary-item" style="color: var(--text-dark);">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span><strong>Quantidade:</strong></span>
+                                    <span id="summary-quantity" style="color: var(--text-dark);">1</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span><strong>Preço Total:</strong></span>
+                                    <span id="summary-price" style="color: var(--primary-red); font-weight: 700; font-size: 1.1rem;">R$ 0,00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                    <span><strong>Observações:</strong></span>
+                                    <span id="summary-observations" style="color: var(--text-medium); text-align: right; max-width: 200px;">
+                                        <em>Nenhuma observação</em>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">
+                        🚀 FINALIZAR PEDIDO
+                    </button>
+                </form>
+                
+                <div class="text-center mt-4">
+                    <a href="home.html" style="color: var(--text-light); text-decoration: none; font-weight: 500;">
+                        ← Voltar para Home
+                    </a>
+                </div>
+            </div>
+
+            <!-- Cardápio de Referência Melhorado -->
+            <div class="card mt-4" style="background: linear-gradient(135deg, #FFF5F5, #FED7D7); border: 2px solid var(--primary-red-light);">
+                <h3 class="text-center mb-4" style="color: var(--text-dark); display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    📖 Nosso Cardápio
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <div>
+                        <h4 style="color: var(--primary-red); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🍔 Lanches Tradicionais
+                        </h4>
+                        <div style="display: grid; gap: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🍔</span>
+                                    <span>X-Salada</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 15,90</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🥓</span>
+                                    <span>X-Bacon</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 18,90</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🍳</span>
+                                    <span>X-Egg</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 16,90</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🌭</span>
+                                    <span>X-Calabresa</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 17,90</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent-orange); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            ⭐ Especiais
+                        </h4>
+                        <div style="display: grid; gap: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🍔</span>
+                                    <span>X-Tudo</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 22,90</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🍗</span>
+                                    <span>X-Frango</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 19,90</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🥬</span>
+                                    <span>X-Vegetariano</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 14,90</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--background-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🥩</span>
+                                    <span>X-Picanha</span>
+                                </span>
+                                <strong style="color: var(--primary-red);">R$ 24,90</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #E6FFFA, #B2F5EA); padding: 1.5rem; border-radius: var(--radius-lg); margin-top: 2rem; border: 2px solid #38B2AC;">
+                    <p style="margin: 0; font-size: 1rem; color: var(--text-dark); display: flex; align-items: center; gap: 0.75rem;">
+                        <span style="font-size: 1.5rem;">💡</span>
+                        <span>
+                            <strong>Dica:</strong> Todos os nossos lanches vêm com batata frita e refrigerante. 
+                            Use o campo de observações para personalizar seu pedido!
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pressão Burguer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const itemSelect = document.getElementById('id_cardapio');
+            const quantitySelect = document.getElementById('id_quantidade');
+            const observacaoTextarea = document.getElementById('id_observacao');
+            const charCount = document.getElementById('char-count');
+            const priceDisplay = document.getElementById('price-display');
+            const selectedPrice = document.getElementById('selected-price');
+            const orderSummary = document.getElementById('order-summary');
+            const summaryItem = document.getElementById('summary-item');
+            const summaryQuantity = document.getElementById('summary-quantity');
+            const summaryPrice = document.getElementById('summary-price');
+            const summaryObservations = document.getElementById('summary-observations');
+            
+            // Contador de caracteres da observação
+            observacaoTextarea.addEventListener('input', function() {
+                const count = this.value.length;
+                charCount.textContent = count + '/100 caracteres';
+                
+                if (count > 90) {
+                    charCount.style.color = 'var(--primary-red)';
+                } else if (count > 70) {
+                    charCount.style.color = 'var(--accent-orange)';
+                } else {
+                    charCount.style.color = 'var(--text-light)';
+                }
+                
+                updateOrderSummary();
+            });
+            
+            // Atualizar preço e resumo quando item for selecionado
+            itemSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const price = selectedOption.getAttribute('data-price');
+                
+                if (price) {
+                    selectedPrice.textContent = `R$ ${price.replace('.', ',')}`;
+                    priceDisplay.style.display = 'block';
+                    orderSummary.style.display = 'block';
+                } else {
+                    priceDisplay.style.display = 'none';
+                    orderSummary.style.display = 'none';
+                }
+                
+                updateOrderSummary();
+            });
+            
+            // Atualizar resumo quando quantidade mudar
+            quantitySelect.addEventListener('change', updateOrderSummary);
+            
+            // Função para atualizar o resumo do pedido
+            function updateOrderSummary() {
+                const selectedOption = itemSelect.options[itemSelect.selectedIndex];
+                const price = selectedOption.getAttribute('data-price');
+                const itemText = selectedOption.textContent;
+                const quantity = quantitySelect.value;
+                const observations = observacaoTextarea.value.trim();
+                
+                if (price) {
+                    const totalPrice = (parseFloat(price) * parseInt(quantity)).toFixed(2).replace('.', ',');
+                    
+                    summaryItem.textContent = itemText;
+                    summaryQuantity.textContent = quantity + ' unidade' + (quantity > 1 ? 's' : '');
+                    summaryPrice.textContent = `R$ ${totalPrice}`;
+                    
+                    if (observations) {
+                        summaryObservations.innerHTML = `<em>${observations}</em>`;
+                    } else {
+                        summaryObservations.innerHTML = '<em>Nenhuma observação</em>';
+                    }
+                }
+            }
+            
+            // Validação do formulário
+            const form = document.getElementById('pedidoForm');
+            form.addEventListener('submit', function(e) {
+                const itemValue = itemSelect.value;
+                const observacaoValue = observacaoTextarea.value;
+                
+                if (!itemValue) {
+                    e.preventDefault();
+                    itemSelect.classList.add('is-invalid');
+                    alert('Por favor, selecione um item do cardápio.');
+                    itemSelect.focus();
+                    return;
+                }
+                
+                if (observacaoValue.length > 100) {
+                    e.preventDefault();
+                    observacaoTextarea.classList.add('is-invalid');
+                    alert('A observação não pode ter mais de 100 caracteres.');
+                    observacaoTextarea.focus();
+                    return;
+                }
+                
+                if (!confirm('Tem certeza que deseja finalizar este pedido?')) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                // Simular loading
+                const btn = this.querySelector('button[type="submit"]');
+                btn.innerHTML = '⏳ Processando...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = '🚀 FINALIZAR PEDIDO';
+                    btn.disabled = false;
+                }, 3000);
+            });
+            
+            // Efeitos de foco nos campos
+            const inputs = document.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

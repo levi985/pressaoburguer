@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressão Burguer - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>🍔 PRESSÃO BURGUER</h1>
+        <nav aria-label="Navegação Principal">
+            <a href="home.html">🏠 Home</a>
+            <a href="formulario_pedido.html">➕ Fazer Pedido</a>
+            <a href="login.html">🔐 Login</a>
+            <a href="cadastro.html">👤 Cadastro</a>
+        </nav>
+    </header>
+
+    <main id="main-content" style="padding: 2rem;">
+        <div class="login-container">
+            <div class="text-center mb-5">
+                <h2 class="text-gradient mb-3">Acesso ao Sistema</h2>
+                <p style="color: var(--text-medium); font-size: 1.1rem;">Entre com suas credenciais para acessar sua conta</p>
+            </div>
+            
+            <div class="card fade-in">
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="id_email">📧 Email</label>
+                        <input type="email" 
+                               id="id_email" 
+                               name="email"
+                               class="form-control" 
+                               required 
+                               placeholder="Digite seu email"
+                               aria-describedby="email-help">
+                        <small id="email-help" class="sr-only">Digite seu endereço de email para fazer login</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_senha">🔒 Senha</label>
+                        <input type="password" 
+                               id="id_senha" 
+                               name="senha"
+                               class="form-control" 
+                               required 
+                               placeholder="Digite sua senha"
+                               aria-describedby="senha-help">
+                        <small id="senha-help" class="sr-only">Digite sua senha de acesso</small>
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                        <input type="checkbox" id="lembrar" name="lembrar" style="width: auto; margin: 0;">
+                        <label for="lembrar" style="margin: 0; font-weight: 500; color: var(--text-medium);">
+                            Lembrar-me neste dispositivo
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-bottom: 1.5rem;">
+                        🚀 ENTRAR
+                    </button>
+                </form>
+                
+                <div class="text-center">
+                    <p style="color: var(--text-medium); margin-bottom: 1rem;">
+                        Não tem conta? 
+                        <a href="cadastro.html" style="color: var(--primary-red); text-decoration: none; font-weight: 600;">
+                            Cadastre-se aqui
+                        </a>
+                    </p>
+                    
+                    <a href="#" style="color: var(--text-light); text-decoration: none; font-size: 0.9rem;">
+                        Esqueci minha senha
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card de informações adicionais -->
+            <div class="card mt-4" style="background: linear-gradient(135deg, #F7FAFC, #EDF2F7); border: 1px solid var(--border-light);">
+                <div class="text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🍔</div>
+                    <h4 style="color: var(--text-dark); margin-bottom: 1rem;">Primeira vez aqui?</h4>
+                    <p style="color: var(--text-medium); margin-bottom: 1.5rem;">
+                        Crie sua conta gratuitamente e comece a fazer pedidos no Pressão Burguer!
+                    </p>
+                    <a href="cadastro.html" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        👤 Criar Conta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pressão Burguer. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Adicionar efeitos de foco nos campos
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.form-control');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Validação em tempo real
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
+                const email = document.getElementById('id_email').value;
+                const senha = document.getElementById('id_senha').value;
+                
+                if (!email || !senha) {
+                    e.preventDefault();
+                    alert('Por favor, preencha todos os campos obrigatórios.');
+                    return;
+                }
+                
+                // Simular loading
+                const btn = this.querySelector('button[type="submit"]');
+                btn.innerHTML = '⏳ Entrando...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = '🚀 ENTRAR';
+                    btn.disabled = false;
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
